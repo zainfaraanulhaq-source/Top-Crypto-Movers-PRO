@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binance Top Gainers Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Binance Top Gainers Tracker</h1>
+            <button id="refreshDataBtn">
+                <svg class="refresh-icon" viewBox="0 0 24 24">
+                    <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004 12v1m7 1.5l-3 3m0 0l3 3m-3-3H20"></path>
+                </svg>
+                <span id="refreshBtnText">Refresh Data</span>
+            </button>
+        </div>
+
+        <p class="note">
+            <span class="highlight">Note:</span> This tracker fetches data from Binance's public API. 
+            The "Previous Interval" data is stored in your browser's session.
+        </p>
+        <p id="lastUpdated">Last updated: --</p>
+
+        <div id="loadingIndicator" class="hidden">
+            <div class="spinner"></div>
+            <span>Fetching data...</span>
+        </div>
+
+        <div id="errorMessage" class="hidden">
+            <p class="error-title">Error:</p>
+            <p id="errorText"></p>
+        </div>
+
+        <div class="tracker-container">
+            <!-- Current Interval Card -->
+            <div class="interval-card">
+                <h2>Current Interval</h2>
+                <p id="currentIntervalTime">--</p>
+                <div class="table-container">
+                    <table id="currentTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Symbol</th>
+                                <th>Price</th>
+                                <th>Gain %</th>
+                                <th>Info</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Previous Interval Card -->
+            <div class="interval-card">
+                <h2>Previous Interval</h2>
+                <p id="previousIntervalTime">--</p>
+                <div class="table-container">
+                    <table id="previousTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Symbol</th>
+                                <th>Price</th>
+                                <th>Gain %</th>
+                                <th>Info</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analysis Modal -->
+    <div id="analysisModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="analysisModalTitle"></h2>
+            <div class="modal-body">
+                <div id="analysisLoading" class="hidden">
+                    <div class="spinner"></div>
+                    <span>Generating analysis...</span>
+                </div>
+                <p id="analysisText"></p>
+            </div>
+            <button id="closeAnalysisBtn">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
